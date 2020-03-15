@@ -3,13 +3,18 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def new_post_path   
+  def new
+    @post = Post.new
+    
   end
 
   def create 
-      Post.create(title: params[:post][:title],
+      post = Post.create(title: params[:post][:title],
     description: params[:post][:description])
-    redirect_to posts_path
+    
+    redirect_to posts_path(@post)
+
+
   end
   
 end
